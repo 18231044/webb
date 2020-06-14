@@ -201,7 +201,7 @@ def upload_avatar():
 
     name = str(int(time.time()))+'.'+suffix
 
-    avatar.save('C:/Users/94406/PycharmProjects/webb/static/img/avatar/' + name)
+    avatar.save('D:/sujun/Documents/WeChat Files/wxid_t5xuzy8q1b8i22/FileStorage/File/2020-06/webb/static/img/avatar/' + name)
     user = Users()
     user.update_avatar(name)
     return 'upload-success'
