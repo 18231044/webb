@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% block content %}
+<link href="css/manage.css" rel="stylesheet" type="text/css">
+<link href="/css/zone.css" rel="stylesheet" type="text/css">
+    <div class="container">
+            <div class="zone-nav">
+                <div class="portrait">
+
+                </div>
+                <div class="list-group">
+                    <a href="/admin/users" class="list-group-item ">用户管理</a>
+                    <a href="/admin/blogs" class="list-group-item zactive">帖子管理</a>
+                    <a href="/admin/comments" class="list-group-item">评论管理</a>
+                    <a href="/admin/files" class="list-group-item">资源管理</a>
+                </div>
+            </div>
+
+            <div class="content">
+                <h2>
+                    帖子管理
+                </h2>
+                <p></p>
+                <table class="table">
+                        <thead>
+                                <tr>
+                                    <td><strong>帖子id</strong></td>
+                                    <td><strong>用户id</strong></td>
+                                    <td><strong>标题</strong></td>
+                                    <td><strong>内容</strong></td>
+                                    <td><strong>最新回复时间</strong></td>
+                                </tr>
+                            </thead>
+                        <tbody>
+                        {% for blog in result %}
+                            <tr>
+                                <td>{{blog.blogid}}</td>
+                                <td>{{blog.userid}}</td>
+                                <td><a href="/blog/{{blog.blogid}}">{{blog.headline}}</a></td>
+                                <td>{{blog.content | striptags | truncate(25)}}</td>
+                                <td>{{blog.updatetime}}</td>
+                                <td>
+                                    {% if blog.hidden == 0 %}
+                                    <button class="btn-danger btn" onclick="delBlog('{{blog.blogid}}')">隐藏</button>
+                                    {% else %}
+                                    <button class="btn-success btn" onclick="cdelBlog('{{blog.blogid}}')">恢复</button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                <div class="turn">
+                    <ul class="pagination">
+                {% if page==1 %}
+                    <li>
+                        <a href="/admin/blogs/1">上一页</a>&nbsp;
+                    </li>
+
+                {% else %}
+                    <li>
+                        <a href="/admin/blogs/{{page-1}}">上一页</a>&nbsp;
+                    </li>
+                {% endif %}
+                {% for i in range(total) %}
+                    <li>
+                         <a href="/admin/blogs/{{i+1}}">{{i+1}}</a>&nbsp;
+                    </li>
+
+                {% endfor %}
+                {% if page==total %}
+                    <li>
+                        <a href="/admin/blogs/{{total}}">下一页</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="/admin/blogs/{{page+1}}">下一页</a>&nbsp;
+                    </li>
+
+                {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+    </div>
+<script>
+    function delBlog(blogid){
+        var param = "blogid=" + blogid;
+        $.post('/admin/del-blog', param, function(data){
+            if(data=='hide-success'){
+                location.reload();
+                return true;
+            }
+            else if(data=='hide-fail'){
+                window.alert('隐藏失败');
+                return false;
+            }
+        })
+    }
+    function cdelBlog(blogid){
+        var param = "blogid=" + blogid;
+        $.post('/admin/cdel-blog', param, function(data){
+            if(data=='chide-success'){
+                location.reload();
+                return true;
+            }
+            else if(data=='chide-fail'){
+                window.alert('恢复失败');
+                return false;
+            }
+        })
+    }
+</script>
+{% endblock %}

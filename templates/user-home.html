@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<link href="/css/zone.css" rel="stylesheet" type="text/css">
+<div class="container">
+            <div class="zone-nav">
+                <div class="portrait">
+                    <img class="icon" alt="用户头像" src="/img/avatar/{{user.avatar}}" />
+                </div>
+                <div class="list-group">
+                    <a href="/home/{{session.get('userid')}}" class="list-group-item zactive">个人资料</a>
+                    <a href="/home/{{session.get('userid')}}/chgpw" class="list-group-item">修改密码</a>
+                    <a href="/home/{{session.get('userid')}}/favorite" class="list-group-item">我的收藏</a>
+                    <a href="/home/{{session.get('userid')}}/myblog" class="list-group-item">我的帖子</a>
+                </div>
+            </div>
+
+            <div class="content">
+                <h2>个人资料</h2>
+                <div class="id-info">
+                    <p>用户名：{{session.get('username')}}</p>
+                </div>
+                <div class="lv-info">
+                    <p class="nick">昵称：<input type="text" placeholder="{{nickname}}" id="nickname"></p>
+                    <p class="level">LV{{level}}</p>
+                    <p class="exp-text">经验值：{{exp_}}/100</p>
+                    <div class="expbar">
+                        <div class="exp" style="width: {{exp_ | int}}%;"></div>
+                    </div>
+                </div>
+                <div class="icon-info">
+                    <p>上传头像：</p>
+                    <div>
+                        <input class="button" type="file" id="avatar">
+                        <button class="button" onclick="uploadAvatar()">上传</button>
+                    </div>
+                </div>
+                <div class="detail">
+                    <p>性别：</p>
+                    <select name="sex" id="sex" >
+                        {% if sex == '女' %}
+                        <option></option>
+                        <option>男</option>
+                        <option selected>女</option>
+                        {% elif sex == '男' %}
+                        <option></option>
+                        <option selected>男</option>
+                        <option>女</option>
+                        {% else %}
+                        <option selected></option>
+                        <option>男</option>
+                        <option>女</option>
+                        {% endif %}
+                    </select>
+                    <p>生日：<input type="date" id="birthday" value="{{birthday}}"></p>
+                </div>
+                <div>
+                    <button type="submit" class="submit" onclick="updateinfo()">确认修改</button>
+                </div>
+            </div>
+</div>
+
+<script>
+    function uploadAvatar(){
+        var data = new FormData();
+        data.append("avatar",$("#avatar").prop("files")[0]);
+
+        $.ajax({
+            url: '/user/avatar',
+            type: 'POST',
+            data: data,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                if(result=='invalid'){
+                    window.alert("请上传正确的图片类型（仅支持.jpg .jpeg .png格式）");
+                    return false;
+                }
+                else if(result=='upload-success'){
+                    window.alert("上传成功");
+                    location.reload();
+                }
+            },
+            error: function (response) {
+                window.alert('上传失败');
+            }
+        });
+    }
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,530 @@
+/*Reply.css*/
+body {
+    background: whitesmoke;
+    min-height: 100vh;
+}
+.sidebar {
+    width: 100px;
+    height: 160px;
+    position: fixed;
+    top: 30%;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background: cornsilk;
+}
+.sidebar div {
+    width: 100%;
+    height: 20%;
+    margin: 0 0 -1px -1px;
+}
+.sidebar em {
+    margin-right: 5px;
+}
+.sidebar button {
+    width: 100%;
+    height: 100%;
+    color: rgb(133, 133, 133);
+    outline: none;
+    border-radius: none;
+    border: 1px solid rgb(201, 201, 201);
+    background-color: rgb(245, 245, 245);
+}
+.sidebar button:hover {
+    color: whitesmoke;
+    border-color: rgb(133, 133, 133);
+    background-color: rgb(133, 133, 133);
+}
+.breadcrumb {
+    width: 250px;
+    position: relative;
+    top: 0;
+    left: 400px;
+    z-index: 3;
+    background: whitesmoke;
+}
+.breadcrumb a {
+    color: rgb(110, 110, 110);
+    font-weight: 600;
+}
+.breadcrumb a:hover {
+    color: black;
+}
+.container {
+    width: 55%;
+    min-height: 20vh;
+    padding: 30px 40px;
+    position: relative;
+    top: 0;
+    background: white;
+}
+.container.auth {
+    
+}
+.title {
+    height: 40px;
+    position: relative;
+    top: -20px;
+    left: 0px;
+    line-height: 40px;
+}
+.title span {
+    margin-right: 10px;
+    user-select: none;
+}
+.download {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 28px;
+    right: 100px;
+    text-align: center;
+    line-height: 25px;
+    border: none;
+    outline: none;
+    background: transparent;
+    user-select: none;
+
+    -webkit-transform: scale(2.0);
+    transform: scale(2.0);
+}
+.download:hover {
+    color: rgb(197, 48, 48);
+}
+.download:active {
+    color: brown;
+}
+.like {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 28px;
+    right: 40px;
+    text-align: center;
+    line-height: 25px;
+    outline: none;
+    border: none;
+    background: transparent;
+    user-select: none;
+
+    -webkit-transform: scale(2.0);
+    transform: scale(2.0);
+}
+.dislike {
+    color: black;
+}
+.dislike:active {
+    color: rgb(255, 0, 10);
+}
+.active-like {
+    color: rgb(255, 0, 10);
+}
+.active-like:active {
+    color: rgb(199, 0, 7);
+}
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+.content.auth {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 80px;
+}
+.content.auth span {
+    color: rgb(201, 201, 201);
+    margin-top: 50px;
+    margin-bottom: 20px;
+
+    -webkit-transform: scale(2.0);
+    transform: scale(2.0);
+}
+.post {
+    width: 100%;
+    min-height: 250px;
+    margin: 0 0 -1px -1px;
+    padding: 50px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-style: solid;
+	border-color: rgb(201, 201, 201);
+	border-width: 1px 0;
+}
+.post#host {
+    min-height: 400px;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+.icon {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.user {
+    width: 10%;
+    height: 250px;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#host .user {
+    min-width: 200px;
+    height: 40px;
+    padding-top: 10px;
+    position: relative;
+    top: -30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+.user img {
+    margin-bottom: 20px;
+}
+.user a {
+    font-size: 15px;
+    color: black;
+    text-decoration: none;
+}
+.user a:hover {
+    font-weight: 600;
+}
+.user p {
+    color: gray;
+    user-select: none;
+}
+#host .user a, #host .user p {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 15px;
+    text-align: left;
+}
+#host .user a {
+    min-width: 120px;
+    margin-top: -10px;
+}
+#host .user p {
+    width: 80px;
+}
+.post-body {
+    width: 90%;
+    min-height: 200px;
+    padding: 0 50px;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+}
+#host .post-body {
+    width: 100%;
+    padding: 0px 50px;
+    position: relative;
+}
+.post-info {
+    margin-top: -50px;
+    margin-right: 90px;
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-self: start;
+    align-items: center;
+    color: gray;
+}
+#host .post-info {
+    margin-right: 50px;
+}
+.post-info div {
+    margin: 0 5px;
+}
+.comment-body {
+    width: 100%;
+    max-height: 300px;
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+    position: relative;
+    top: 30px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background: rgb(253, 253, 253);
+    border: 1px solid rgb(238, 238, 238);
+}
+.comment {
+    width: 100%;
+    max-height: 270px;
+    margin: 0;
+    padding: 0;
+}
+.comment div {
+    width: 100%;
+    max-height: 60px;
+    padding: 0 10px;
+    padding-top: 10px;
+    display: flex;
+    justify-self: start;
+    align-items: flex-start;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+.comment a {
+    min-width: 30px;
+    max-width: 80px;
+    color: black;
+    font-weight: 600;
+}
+.comment p {
+    width: calc(100% - 60px);
+    position: relative;
+    left: 5px;;
+}
+.com-input {
+    width: 100%;
+    height: 30px;
+}
+.com-input input {
+    width: 90%;
+    height: 30px;
+    margin: 0;
+    padding-left: 10px;
+    line-height: 30px;
+    border: none;
+    outline: none;
+}
+.com-input button {
+    width: 10%;
+    height: 30px;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    border: none;
+    outline: none;
+    border-radius: none;
+    background: rgb(244, 244, 247);
+    user-select: none;
+}
+.com-input button:hover {
+    background: rgb(238, 238, 238);
+}
+.com-input button:active {
+    background: rgb(226, 226, 226);
+}
+.post-btn {
+    width: 100px;
+    position: relative;
+    right: calc(-100% + 100px);
+    top: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.self {
+    width: 150px;
+    right: calc(-100% + 150px);
+}
+.post-btn button {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    outline: none;
+    color: rgb(133, 133, 133);
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 50%;
+    background: white;
+    user-select: none;
+}
+.thup-btn:hover {
+    color: white;
+    background: rgb(255, 102, 0);
+    border-color: rgb(255, 102, 0);
+}
+.thup-btn:active {
+    background: rgb(240, 80, 0);
+    border-color: rgb(240, 80, 0);
+}
+.thup-btn.light {
+    color: rgb(255, 102, 0);
+    border: none;
+    background: transparent;
+
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.thdown-btn:hover {
+    color: white;
+    background: rgb(150, 150, 150);
+    border-color: rgb(150, 150, 150);
+}
+.thdown-btn:active {
+    background: rgb(135, 135, 135);
+    border-color: rgb(135, 135, 135);
+}
+.thdown-btn.light {
+    color: black;
+    border: none;
+    background: transparent;
+    
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.delete-btn:hover {
+    color: white;
+    background: rgb(205, 42, 42);
+    border-color: rgb(205, 42, 42);
+}
+.delete-btn:active {
+    background: rgb(190, 42, 42);
+    border-color: rgb(190, 42, 42);
+}
+.turn {
+    width: 100%;
+    position: relative;
+    bottom: -20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pagination>li>a {
+    min-width: 40px;
+    text-align: center;
+    color: rgb(133, 133, 133);
+    background: whitesmoke;
+    border-radius: none;
+    border: none;
+
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+.pagination>li>a:hover {
+    font-weight: 600;
+    color: black;
+
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+.jump {
+    width: 100px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.jump input {
+    width: 50%;
+    height: 30px;
+    position: relative;
+    text-align: center;
+    line-height: 30px;
+    color: rgb(133, 133, 133);
+    border: none;
+    outline: none;
+    background: rgb(245, 245, 245);
+}
+.jump a {
+    width: 50%;
+    height: 30px;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    line-height: 30px;
+    color: rgb(133, 133, 133);
+    border: none;
+    outline: none;
+    background: rgb(230, 230, 230);
+}
+.jump a:hover {
+    color: white;
+    background: rgb(173, 173, 173);
+
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+.reply {
+    width: 55%;
+    height: 200px;
+    margin-bottom: 100px;
+    position: relative;
+    top: 0;
+    left: 50%;
+    background: rgb(100, 100, 100);
+
+    -webkit-transform: translateX(-50%); 
+    transform: translateX(-50%); 
+}
+.reply textarea {
+    width: calc(100% - 40px);
+    height: 100%;
+    padding: 10px 30px;
+    font-size: 16px;
+    color: whitesmoke;
+    border: none;
+    outline: none;
+    background: transparent;
+    resize: none;
+}
+.submit {
+    width: 40px;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    color: white;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    background: rgb(75, 75, 75);
+    cursor: pointer;
+    user-select:none;
+    
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+.submit:hover {
+    background: rgb(163, 30, 30);
+
+    -webkit-transition: .0s;
+    transition: .0s;
+}
+.booter {
+	width: 100%;
+    height: 200px;
+    margin: 0;
+    position: relative;
+    bottom: 0;
+	color: black;
+	text-align: center;
+	z-index: 2;
+    background: white;
+    box-shadow: 0 4px 10px rgb(185, 185, 185);
+}
+.booter.auth {
+    width: 100%;
+    height: 200px;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+	color: black;
+	text-align: center;
+	z-index: 2;
+    background: white;
+    box-shadow: 0 4px 10px rgb(185, 185, 185);
+}

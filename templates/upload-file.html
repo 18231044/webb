@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <br>
+                <br>
+                <div class="form-group">
+                    <h3>资源标题</h3>
+                    <input type="text" class="form-control" id="headline" name="headline" placeholder="输入资源标题">
+                    </div>
+
+            </div>
+        </div>
+        <br>
+        <br>
+        <div>
+            <h3>上传资源：</h3><input type="file" id="upfile" class="input-group">
+        </div>
+        <br>
+        <br>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+
+                    <div class="form-group">
+                        <h3>资源描述</h3>
+                        <textarea class="form-control" id="content" name="content" rows="25"></textarea>
+                    </div>
+                    <button class="btn btn-success" onclick="uploadFile()">提交分享</button>
+
+                <br>
+                <br>
+                <br>
+
+            </div>
+        </div>
+    </div>
+
+<script>
+    function uploadFile(){
+        var data = new FormData();
+        data.append("headline",$.trim($("#headline").val()));
+        data.append("content",$.trim($("#content").val()));
+        data.append("upfile",$("#upfile").prop("files")[0]);
+
+        $.ajax({
+            url: '/upload',
+            type: 'POST',
+            data: data,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                if(result=='invalid'){
+                    window.alert("抱歉，不支持该文件类型");
+                    return false;
+                }
+                else if(result=='content-error'){
+                    window.alert("您输入的文件描述过长");
+                    return false;
+                }
+                else if(result=='headline-error'){
+                     window.alert("您输入的文件标题过长");
+                    return false;
+                }
+                else if(result=='upload-success'){
+                    window.alert("上传成功");
+                    location.reload();
+                }
+            },
+            error: function (response) {
+                window.alert('上传失败');
+            }
+        });
+    }
+</script>
+{% endblock %}

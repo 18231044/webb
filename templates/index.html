@@ -1,0 +1,306 @@
+{% extends 'base.html' %}
+{% block content %}
+<link href="/css/home.css" rel="stylesheet">
+
+<div class="item img-box">
+        <img class="img" alt="pic2" src="img/homeback2.jpg"/>
+    </div>
+
+    <div class="jumbotron home-text">
+        <h1>printf("  Hello, world!  ");</h1>
+        <p>/* Welcome, this is an IT Communication BBS :) */</p>
+    </div>
+
+    <div class="cont-body">
+        <div class="c-container">
+            <div class="cont-card">
+                <div class="cont-form form1">
+                    <div class="content">
+                        <img src="" alt="">
+                        <h3>Step1</h3>
+                    </div>
+                </div>
+                <div class="cont-form form2">
+                    <div class="content">
+                        <p>
+                            &nbsp;&nbsp;欢迎您使用该论坛:)
+                        </p>
+                        <p>
+                            &nbsp;&nbsp;这里是论坛的一些使用说明及用户须知
+                        </p>
+                        <p>
+                            &nbsp;&nbsp;请跟随Step1~4的顺序阅读
+                        </p>
+                        <a href="#intro">View details »</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cont-card">
+                <div class="cont-form form1">
+                    <div class="content">
+                        <img src="" alt="">
+                        <h3>Step2</h3>
+                    </div>
+                </div>
+                <div class="cont-form form2">
+                    <div class="content">
+                        <p>
+                            &nbsp;&nbsp;本论坛分为四个板块：讨论区、刷题区、校园周边、资源分享、课程推荐。
+                        </p>
+                        <p>
+                            &nbsp;&nbsp;请注意发布帖子时请发布到正确的板块，否则管理员会对帖子进行删除。
+                        </p>
+                        <p>
+                            &nbsp;&nbsp;请用户在论坛进行交流时注意自己的言行， 不要散布危害国家利益、诽谤辱骂他人、淫秽色情等不良的资源和言论，否则会被禁言。
+                        </p>
+                        <a href="#intro">View details »</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cont-card">
+                <div class="cont-form form1">
+                    <div class="content">
+                        <img src="" alt="">
+                        <h3>Step3</h3>
+                    </div>
+                </div>
+                <div class="cont-form form2">
+                    <div class="content">
+                        <p>
+                            &nbsp;&nbsp;论坛设有等级制度，每天登录、发帖、评论等都会获得经验。
+                        </p>
+                        <p>
+                            &nbsp;&nbsp;用户的等级越高便可获得更高的权限（阅读帖子等）
+                        </p>
+                        <a href="#intro">View details »</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cont-card">
+                <div class="cont-form form1">
+                    <div class="content">
+                        <img src="" alt="">
+                        <h3>Step4</h3>
+                    </div>
+                </div>
+                <div class="cont-form form2">
+                    <div class="content">
+                        <p>
+                            &nbsp;&nbsp;如果需要搜索帖子可以用论坛提供的搜索功能，输入想要搜索帖子的标题。
+                        </p>
+                        <p>
+                            &nbsp;&nbsp;用户可以收藏自己喜欢的帖子，并在个人空间找到它们，方便之后继续阅读。
+                        </p>
+                        <p>
+                            &nbsp;&nbsp;最后，感谢您使用本论坛，祝您使用愉快！xD
+                        </p>
+                        <a href="#intro">View details »</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="intro" class="intro-window">
+        <div>
+            <a href="#" title="Close" class="intro-close">Close</a>
+            <h1>新手上路!</h1>
+            <div><small>欢迎您使用该论坛，下面是一些论坛的使用说明及用户须知。</small></div>
+            <div>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本论坛分为<span style="color: rgb(255, 0, 87);font-weight: bold;">四个板块</span>：讨论区、刷题区、校园周边、资源分享、课程推荐</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在讨论区，用户可以对各种问题进行讨论，发表自己的观点</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在刷题区，用户可以具体讨论某道题的解法，与其他用户进行讨论共同进步</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在校园周边板块，用户可以分享校园周边的信息（如吃、喝、玩、乐、学等）</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在资源共享板块，用户可以以上传文件的形式分享自己认为有价值的资源，也可以对资源进行下载</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在课程推荐板块，用户可以发出各种公开课以及付费课程的介绍和推荐信息</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请注意发布帖子时请发布到正确的板块，否则管理员会对帖子进行删除。也请用户在论坛进行交流时注意自己的言行， <span style="font-weight: bold;">不要散布危害国家利益、诽谤辱骂他人、淫秽色情等不良的资源和言论，否则会被禁言。</span></p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;论坛设有<span style="color: rgb(255, 0, 87);font-weight: bold;">等级制度</span>，每天登录、发帖、评论等都会获得经验，但获得经验次数有限，具体为：</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录：1次/天  每次可获得10点经验</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评论：5次/天  每次可获得2点经验</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发帖：2次/天  每次可获得5点经验</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评论被他人点赞：5次/天  每次可获得1点经验</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户的等级越高便可获得更高的权限（阅读帖子等）</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果需要<span style="color: rgb(255, 0, 87);font-weight: bold;">搜索</span>帖子可以用论坛提供的搜索功能，输入想要搜索帖子的标题。</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户可以<span style="color: rgb(255, 0, 87);font-weight: bold;">收藏</span>自己喜欢的帖子，并在个人空间找到它们，方便之后继续阅读。</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最后，感谢您使用本论坛，祝您使用愉快。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll">
+        <span>SCROLL</span>
+    </div>
+
+    <div class="bot-body">
+        <div class="bot-cont suggest">
+            <h4>今日推荐</h4>
+            <div class="bot-card">
+                <div class="post">
+                    <div class="left">
+                        <div class="title">
+                            <h4><a href="/blog/{{result[0][0].blogid}}">{{result[0][0].headline}}</a></h4>
+                            <span></span>
+                        </div>
+                        <div class="last">
+                            <span class="glyphicon glyphicon-share-alt"></span>
+                            <span>最后回复于</span>
+                            <span>{{result[0][0].updatetime}}</span>
+                            <p class="content">
+                                {{result[0][0].content | striptags | truncate(20)}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="right">
+                        <div class="rauthor">
+                            <span class="glyphicon glyphicon-bookmark"></span>
+                            <span>{{result[0][1]}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="left">
+                        <div class="title">
+                            <h4><a href="/blog/{{result[1][0].blogid}}">{{result[1][0].headline}}</a></h4>
+                            <span></span>
+                        </div>
+                        <div class="last">
+                            <span class="glyphicon glyphicon-share-alt"></span>
+                            <span>最后回复于</span>
+                            <span>{{result[1][0].updatetime}}</span>
+                            <p class="content">
+                                {{result[1][0].content | striptags | truncate(20)}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="right">
+                        <div class="rauthor">
+                            <span class="glyphicon glyphicon-bookmark"></span>
+                            <span>{{result[1][1]}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="left">
+                        <div class="title">
+                            <h4><a href="/blog/{{result[2][0].blogid}}">{{result[2][0].headline}}</a></h4>
+                            <span></span>
+                        </div>
+                        <div class="last">
+                            <span class="glyphicon glyphicon-share-alt"></span>
+                            <span>最后回复于</span>
+                            <span>{{result[2][0].updatetime}}</span>
+                            <p class="content">
+                                {{result[2][0].content | striptags | truncate(20)}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="right">
+                        <div class="rauthor">
+                            <span class="glyphicon glyphicon-bookmark"></span>
+                            <span>{{result[2][1]}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="left">
+                        <div class="title">
+                            <h4><a href="/blog/{{result[3][0].blogid}}">{{result[3][0].headline}}</a></h4>
+                            <span></span>
+                        </div>
+                        <div class="last">
+                            <span class="glyphicon glyphicon-share-alt"></span>
+                            <span>最后回复于</span>
+                            <span>{{result[3][0].updatetime}}</span>
+                            <p class="content">
+                                {{result[3][0].content | striptags | truncate(20)}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="right">
+                        <div class="rauthor">
+                            <span class="glyphicon glyphicon-bookmark"></span>
+                            <span>{{result[3][1]}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="left">
+                        <div class="title">
+                            <h4><a href="/blog/{{result[4][0].blogid}}">{{result[4][0].headline}}</a></h4>
+                            <span></span>
+                        </div>
+                        <div class="last">
+                            <span class="glyphicon glyphicon-share-alt"></span>
+                            <span>最后回复于</span>
+                            <span>{{result[4][0].updatetime}}</span>
+                            <p class="content">
+                                {{result[4][0].content | striptags | truncate(20)}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="right">
+                        <div class="rauthor">
+                            <span class="glyphicon glyphicon-bookmark"></span>
+                            <span>{{result[4][1]}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bot-cont board">
+            <h4>排行榜</h4>
+            <div class="border-content">
+                <div class="title"><h4>{{result[0][0].headline}}</h4></div>
+
+                <div class="rauthor">
+                    <span class="glyphicon glyphicon-bookmark"></span>
+                    <span>{{result[0][1]}}</span>
+                </div>
+            </div>
+            <div class="border-content"></div>
+            <div class="border-content">
+                <div class="title"><h4>{{result[1][0].headline}}</h4></div>
+
+                <div class="rauthor">
+                    <span class="glyphicon glyphicon-bookmark"></span>
+                    <span>{{result[1][1]}}</span>
+                </div>
+            </div>
+            <div class="border-content"></div>
+            <div class="border-content">
+                <div class="title"><h4>{{result[2][0].headline}}</h4></div>
+
+                <div class="rauthor">
+                    <span class="glyphicon glyphicon-bookmark"></span>
+                    <span>{{result[2][1]}}</span>
+                </div>
+            </div>
+            <div class="border-content"></div>
+            <div class="border-content">
+                <div class="title"><h4>{{result[3][0].headline}}</h4></div>
+
+                <div class="rauthor">
+                    <span class="glyphicon glyphicon-bookmark"></span>
+                    <span>{{result[3][1]}}</span>
+                </div>
+            </div>
+            <div class="border-content"></div>
+            <div class="border-content">
+                <div class="title"><h4>{{result[4][0].headline}}</h4></div>
+
+                <div class="rauthor">
+                    <span class="glyphicon glyphicon-bookmark"></span>
+                    <span>{{result[4][1]}}</span>
+                </div>
+            </div>
+        </div>
+    </div></div>
+    <div class="jumbotron booter">
+        <p>底部</p>
+    </div>
+{% endblock %}

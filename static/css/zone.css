@@ -1,0 +1,282 @@
+/*Zone.css*/
+body {
+    background: white;
+}
+.container {
+    width: 55%;
+    height: 80vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 50%;
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    background: white;
+    box-shadow: 0 0 3px rgb(167, 167, 167);
+
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.icon {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.zone-nav {
+    width: 20%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: whitesmoke;
+}
+.zone-nav .portrait {
+    width: 100%;
+    height: 140px;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.zone-nav .list-group {
+    width: 100%;
+    margin: 0; 
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: none;
+}
+.zone-nav .list-group a {
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    line-height: 50px;
+    border: none;
+    border-radius: none;
+}
+.zone-nav .badge {
+    position: absolute;
+    top: 17px;
+    right: 30px;
+    text-align: center;
+    background-color: rgb(255, 0, 87);
+}
+.zone-nav .list-group-item:hover {
+    color: white;
+    background: rgb(97, 97, 97);
+
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+.zone-nav .zactive {
+    color: white;
+    background: rgb(50, 50, 50);
+}
+.zone-nav .list-group-item.zactive:hover {
+    color: black;
+    font-weight: 900;
+    background: rgb(255, 0, 87);
+
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+.content {
+    width: 80%;
+    height: 100%;
+    margin: 0;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    background: white;
+}
+.content div {
+    width: 100%;
+    margin: 0;
+    padding: 20px 10px;
+    font-size: 15px;
+}
+.content .id-info {
+    color: rgb(160, 160, 160);
+}
+.content .lv-info{
+    position: relative;
+}
+.content .nick {
+    font-size: 16px;
+    font-weight: 900;
+}
+.content .nick input {
+    width: 200px;
+    padding-left: 5px;
+    position: absolute;
+    top: 17px;
+    border-radius: none;
+    outline: none;
+}
+.content .level {
+    width: 50px;
+    height: 25px;
+    position: relative;
+    top: 5px;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    line-height: 25px;
+    font-weight: 900;
+    border-radius: 7px;
+    background: rgb(255, 0, 87);
+}
+.content .exp-text {
+    width: 500px;
+    height: 25px;
+    position: absolute;
+    top: 57px;
+    left: 59px;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    line-height: 25px;
+}
+.content .expbar {
+    width: 500px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 57px;
+    left: 59px;
+    z-index: 0;
+    border-radius: 7px;
+    background: rgb(50, 50, 50);
+    -webkit-animation: expanad 1s ease-in-out infinite;
+    animation: expanad 1s ease-in-out infinite;
+}
+.content .expbar .exp {
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 7px;
+    background: rgb(255, 0, 87);
+}
+.content .icon-info button {
+    width: 50px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    text-align: center;
+    line-height: 25px;
+    outline: none;
+    border: 1px solid rgb(160, 160, 160);
+    border-radius: 7px;
+    background: whitesmoke;
+}
+.content .icon-info button:active {
+    color: whitesmoke;
+    background: rgb(160, 160, 160);
+}
+.content .detail {
+    position: relative;
+}
+.content .detail #sex {
+    width: 50px;
+    height: 25px;
+    padding-left: 5px;
+    position: absolute;
+    top: 17px;
+    left: 60px;
+    text-align: center;
+    line-height: 25px;
+    outline: none;
+}
+.content .detail input {
+    width: 150px;
+    height: 25px;
+    margin-left: 4px;
+    padding-left: 5px;
+    line-height: 25px;
+}
+.content .chg-pswd {
+    position: relative;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+.content .chg-pswd input {
+    width: 200px;
+    height: 25px;
+    margin-left: 10px;
+    padding-left: 7px;
+    font-size: 14px;
+    line-height: 25px;
+    border-radius: none;
+    outline: none;
+}
+.submit {
+    width: 200px;
+    height: 40px;
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    border: none;
+    outline: none;
+    background: whitesmoke;
+}
+.submit:hover {
+    color: white;
+    font-weight: 900;
+    background: rgb(50, 50, 50);
+}
+.submit:active {
+    color: black;
+    font-weight: 900;
+    background: rgb(255, 0, 87);
+}
+.col6>span:hover {
+    background: ;
+    color: rgb(190, 42, 42);
+
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+.booter {
+	width: 100%;
+    height: 200px;
+    margin: 0;
+    margin-top: 20px;
+    position: relative;
+    bottom: 0;
+	color: black;
+	text-align: center;
+	z-index: 2;
+    background: white;
+    box-shadow: 0 4px 10px rgb(185, 185, 185);
+}

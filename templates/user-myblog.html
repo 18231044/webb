@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<link href="/css/zone.css" rel="stylesheet" type="text/css">
+    <div class="container">
+            <div class="zone-nav">
+                <div class="portrait">
+                    <img class="icon" alt="用户头像" src="/img/avatar/{{user.avatar}}" />
+                </div>
+                <div class="list-group">
+                    <a href="/home/{{session.get('userid')}}" class="list-group-item ">个人资料</a>
+                    <a href="/home/{{session.get('userid')}}/chgpw" class="list-group-item">修改密码</a>
+                    <a href="/home/{{session.get('userid')}}/favorite" class="list-group-item">我的收藏</a>
+                    <a href="/home/{{session.get('userid')}}/myblog" class="list-group-item zactive">我的帖子</a>
+                </div>
+            </div>
+
+            <div class="content">
+                <h2>
+                    我的帖子
+                </h2>
+                <p></p>
+                <table class="table">
+                        <thead>
+                                <tr>
+                                    <td><strong>标题</strong></td>
+                                    <td><strong>内容</strong></td>
+                                    <td><strong>回复数</strong></td>
+                                </tr>
+                            </thead>
+                        <tbody>
+                        {% for blog in result %}
+                            <tr>
+                                <td><a href="/blog/{{blog.blogid}}">{{blog.headline}}</a></td>
+                                <td>{{blog.content | striptags | truncate(25)}}</td>
+                                <td>{{blog.replycount}}</td>
+                                <td class="col6">
+
+                                    <span class="glyphicon glyphicon-remove-sign" onclick="delete_blog('{{blog.blogid}}')"></span>
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+            </div>
+    </div>
+
+
+{% endblock %}
+

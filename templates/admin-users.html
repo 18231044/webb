@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block content %}
+<link href="css/manage.css" rel="stylesheet" type="text/css">
+<link href="/css/zone.css" rel="stylesheet" type="text/css">
+    <div class="container">
+            <div class="zone-nav">
+                <div class="portrait">
+
+                </div>
+                <div class="list-group">
+                    <a href="/admin/users" class="list-group-item zactive">用户管理</a>
+                    <a href="/admin/blogs" class="list-group-item">帖子管理</a>
+                    <a href="/admin/comments" class="list-group-item">评论管理</a>
+                    <a href="/admin/files" class="list-group-item">资源管理</a>
+                </div>
+            </div>
+
+            <div class="content">
+                <h2>
+                    用户管理
+                </h2>
+                <p></p>
+                <table class="table">
+                        <thead>
+                                <tr>
+                                    <td><strong>用户id</strong></td>
+                                    <td><strong>用户名</strong></td>
+                                    <td><strong>昵称</strong></td>
+                                    <td><strong>电子邮箱</strong></td>
+                                </tr>
+                            </thead>
+                        <tbody>
+                        {% for user in result %}
+                            <tr>
+                                <td>{{user.userid}}</td>
+                                <td>{{user.username}}</td>
+                                <td>{{user.nickname}}</td>
+                                <td>{{user.email}}</td>
+                                <td>
+                                    {% if user.ban == 0 %}
+                                    <button class="btn-danger btn" onclick="banUser('{{user.userid}}')">禁言</button>
+                                    {% else %}
+                                    <button class="btn-success btn" onclick="cbanUser('{{user.userid}}')">解除禁言</button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                <div class="turn">
+                    <ul class="pagination">
+                {% if page==1 %}
+                    <li>
+                        <a href="/admin/users/1">上一页</a>&nbsp;
+                    </li>
+
+                {% else %}
+                    <li>
+                        <a href="/admin/users/{{page-1}}">上一页</a>&nbsp;
+                    </li>
+                {% endif %}
+                {% for i in range(total) %}
+                    <li>
+                         <a href="/admin/users/{{i+1}}">{{i+1}}</a>&nbsp;
+                    </li>
+
+                {% endfor %}
+                {% if page==total %}
+                    <li>
+                        <a href="/admin/users/{{total}}">下一页</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="/admin/users/{{page+1}}">下一页</a>&nbsp;
+                    </li>
+
+                {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+    </div>
+<script>
+    function banUser(userid){
+        var param = "userid=" + userid;
+        $.post('/admin/ban', param, function(data){
+            if(data=='ban-success'){
+                location.reload();
+                return true;
+            }
+            else if(data=='ban-fail'){
+                window.alert('禁言失败');
+                return false;
+            }
+        })
+    }
+    function cbanUser(userid){
+        var param = "userid=" + userid;
+        $.post('/admin/cban', param, function(data){
+            if(data=='cban-success'){
+                location.reload();
+                return true;
+            }
+            else if(data=='cban-fail'){
+                window.alert('解除禁言失败');
+                return false;
+            }
+        })
+    }
+</script>
+{% endblock %}

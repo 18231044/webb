@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<link href="/css/zone.css" rel="stylesheet" type="text/css">
+    <div class="container">
+            <div class="zone-nav">
+                <div class="portrait">
+                    <img class="icon" alt="用户头像" src="/img/avatar/{{user.avatar}}" />
+                </div>
+                <div class="list-group">
+                    <a href="/home/{{session.get('userid')}}" class="list-group-item ">个人资料</a>
+                    <a href="/home/{{session.get('userid')}}/chgpw" class="list-group-item zactive">修改密码</a>
+                    <a href="/home/{{session.get('userid')}}/favorite" class="list-group-item">我的收藏</a>
+                    <a href="/home/{{session.get('userid')}}/myblog" class="list-group-item">我的帖子</a>
+                </div>
+            </div>
+
+            <div class="content">
+                <h2>修改密码</h2>
+                <div class="chg-pswd">
+                    <p>原密码：<input type="password" placeholder="请输入您的原密码" id="oldpassword"></p>
+                    <p>新密码：<input type="password" placeholder="请输入您的新密码，6-16位，区分大小写" id="newpassword"></p>
+                    <p>确认密码：<input type="password" placeholder="请再次输入您的密码" id="repassword"></p>
+                </div>
+                <div>
+                    <button type="submit" class="submit" onclick="changePassword({{session.get('userid')}})">确认修改</button>
+                </div>
+            </div>
+    </div>
+
+{% endblock %}

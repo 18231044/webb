@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+<link href="/css/div.css" rel="stylesheet">
+<div>
+        <ul class="breadcrumb">
+            <li></li>
+            <li class="active"></li>
+        </ul>
+    </div>
+
+    <div class="justify">
+        <div class="container">
+            <div class="head">
+                <div>
+                    {% if type=='discuss' %}
+                    <h2>讨论区</h2>
+                    <p>在这里和大家讨论各种问题！</p>
+                    {% elif type=='do' %}
+                    <h2>刷题区</h2>
+                    <p>一起刷题，共同进步XD</p>
+                    {% elif type=='commend' %}
+                    <h2>课程推荐</h2>
+                    <p>希望你在这里找到喜欢的课程，一起学习，一起进步！</p>
+                    {% elif type=='school' %}
+                    <h2>校园周边</h2>
+                    <p>在这里和大家分享校园周边的各种信息！</p>
+                    {% endif %}
+                </div>
+                <div>
+                    <a href="/blog/write"><button type="button" class="post-btn">发布新帖</button></a>
+                </div>
+            </div>
+
+            <div class="post-body">
+                {% for blog, user in result %}
+                <div class="post">
+                    <div class="left">
+                        <div class="title">
+                            <h4><a href="/blog/{{blog.blogid}}">{{blog.headline}}</a></h4>
+                            <span></span>
+                            <span>[需要等级:{{blog.level}}]</span>
+                        </div>
+                        <div class="last">
+                            <span class="glyphicon glyphicon-share-alt"></span>
+
+                            <span>最后回复于</span>
+                            <span>{{blog.updatetime}}</span>
+                            <p class="content">
+                                {{blog.content | striptags | truncate(20)}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="right">
+                        <div class="rauthor">
+                            <span class="glyphicon glyphicon-bookmark"></span>
+                            <span>{{user.nickname}}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="turn">
+                <ul class="pagination">
+                    {% if page==1 %}
+                    <li><a href="/{{type}}/1">上一页</a>&nbsp;</li>
+                    {% else %}
+                    <li><a href="/{{type}}/{{page-1}}">上一页</a>&nbsp;</li>
+                    {% endif %}
+                    {% for i in range(total) %}
+                    <li><a href="/{{type}}/{{i+1}}">{{i+1}}</a>&nbsp;</li>
+                    {% endfor %}
+                    {% if page==total %}
+                    <li><a href="/{{type}}/{{total}}">下一页</a></li>&nbsp;
+                    {% else %}
+                    <li><a href="/{{type}}/{{page+1}}">下一页</a>&nbsp;</li>
+                    {% endif %}
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="jumbotron booter">
+            <p>底部</p>
+        </div>
+    </div>
+{% endblock %}

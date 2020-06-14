@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+<link href="/css/div.css" rel="stylesheet">
+<div>
+        <ul class="breadcrumb">
+            <li></li>
+            <li class="active"></li>
+        </ul>
+    </div>
+
+    <div class="justify">
+        <div class="container">
+            <div class="head">
+                <div>
+                    <h2>资源共享</h2>
+                    <p>从这里可以获取学&nbsp;&nbsp;习&nbsp;&nbsp;资&nbsp;&nbsp;料</p>
+                </div>
+                <div>
+                    <a href="/preupload"><button type="button" class="post-btn">上传资源</button></a>
+                </div>
+            </div>
+
+            <div class="post-body">
+                {% for file, user in result %}
+                <div class="post">
+                    <div class="left">
+                        <div class="title"><h4>{{file.headline}}</h4></div>
+                        <div class="last">
+                            <span class="glyphicon glyphicon-share-alt"></span>
+
+                            <span>发布于</span>
+                            <span>{{file.uploadtime}}</span>
+                            <p class="content">
+                                {{file.content | striptags | safe}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="right">
+                        <div class="author">
+                            <span class="glyphicon glyphicon-bookmark"></span>
+                            <span>{{user.nickname}}</span>
+                        </div>
+                        <div class="download">
+                            <button onclick="location.href='/download/{{file.filename}}'"><span class="glyphicon glyphicon-circle-arrow-down"></span></button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="turn">
+                <ul class="pagination">
+                    {% if page==1 %}
+                    <li><a href="/share/1">上一页</a>&nbsp;</li>
+                    {% else %}
+                    <li><a href="/share/{{page-1}}">上一页</a>&nbsp;</li>
+                    {% endif %}
+                    {% for i in range(total) %}
+                    <li><a href="/share/{{i+1}}">{{i+1}}</a>&nbsp;</li>
+                    {% endfor %}
+                    {% if page==total %}
+                    <li><a href="/share/{{total}}">下一页</a></li>&nbsp;
+                    {% else %}
+                    <li><a href="/share/{{page+1}}">下一页</a>&nbsp;</li>
+                    {% endif %}
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="jumbotron booter">
+            <p>底部</p>
+        </div>
+    </div>
+
+{% endblock %}

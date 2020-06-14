@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block content %}
+<link href="/css/login.css" rel="stylesheet">
+<div class="content">
+        <div class="cont-form log">
+            <div class="line line-left"></div>
+            <h3>登录</h3>
+            <div class="line line-right"></div>
+            <div class="form-group">
+                <input type="text" class="form-control form-in" id="username" placeholder="用户名" />
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control form-in" id="Password" placeholder="密码" />
+            </div>
+
+            <button type="submit" class="form-btn submit" onclick="login(event)">登录</button>
+        </div>
+
+        <div class="cont-sub">
+            <div class="img">
+                <div class="img-text regmes">
+                    <h2>没有账号？</h2>
+                    <p>立即注册，享用大量学习资源！</p>
+                </div>
+                <div class="img-text logmes">
+                    <h2>已有帐号？</h2>
+                    <p>见到你很高心xD，快点登录吧！</p>
+                </div>
+                <div class="img-btn">
+                    <span class="regmes">注 册</span>
+                    <span class="logmes">登 录</span>
+                </div>
+            </div>
+            <div class="cont-form reg" >
+                <div class="line line-left"></div>
+                <h3>注册</h3>
+                <div class="line line-right"></div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-in" id="usernm" placeholder="用户名" />
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control form-in" id="email" placeholder="邮箱" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control form-in" id="pswd" placeholder="密码" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control form-in" id="confpswd" placeholder="确认密码" />
+                </div>
+                <div class="checkbox manual">
+                    <input type="checkbox" id="checkbox"/>我已阅读<a href="#intro"> 《论坛使用手册》 </a>
+                </div>
+                <button type="submit" class="form-btn submit" onclick="register()">注册</button>
+            </div>
+        </div>
+    </div>
+<div id="intro" class="intro-window">
+        <div>
+            <a href="#" title="Close" class="intro-close">Close</a>
+            <h1>新手上路!</h1>
+            <div><small>欢迎您使用该论坛，下面是一些论坛的使用说明及用户须知。</small></div>
+            <div>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本论坛分为<span style="color: rgb(255, 0, 87);font-weight: bold;">四个板块</span>：讨论区、刷题区、校园周边、资源分享、课程推荐</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在讨论区，用户可以对各种问题进行讨论，发表自己的观点</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在刷题区，用户可以具体讨论某道题的解法，与其他用户进行讨论共同进步</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在校园周边板块，用户可以分享校园周边的信息（如吃、喝、玩、乐、学等）</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在资源共享板块，用户可以以上传文件的形式分享自己认为有价值的资源，也可以对资源进行下载</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在课程推荐板块，用户可以发出各种公开课以及付费课程的介绍和推荐信息</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请注意发布帖子时请发布到正确的板块，否则管理员会对帖子进行删除。也请用户在论坛进行交流时注意自己的言行， <span style="font-weight: bold;">不要散布危害国家利益、诽谤辱骂他人、淫秽色情等不良的资源和言论，否则会被禁言。</span></p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;论坛设有<span style="color: rgb(255, 0, 87);font-weight: bold;">等级制度</span>，每天登录、发帖、评论等都会获得经验，但获得经验次数有限，具体为：</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录：1次/天  每次可获得10点经验</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评论：5次/天  每次可获得2点经验</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发帖：2次/天  每次可获得5点经验</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评论被他人点赞：5次/天  每次可获得1点经验</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户的等级越高便可获得更高的权限（阅读帖子等）</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果需要<span style="color: rgb(255, 0, 87);font-weight: bold;">搜索</span>帖子可以用论坛提供的搜索功能，输入想要搜索帖子的标题。</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户可以<span style="color: rgb(255, 0, 87);font-weight: bold;">收藏</span>自己喜欢的帖子，并在个人空间找到它们，方便之后继续阅读。</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最后，感谢您使用本论坛，祝您使用愉快。</p>
+            </div>
+        </div>
+    </div>
+<div class="jumbotron text-center booter">
+        <p>底部</p>
+    </div>
+<script>
+    document.querySelector('.img-btn').addEventListener (
+	'click',
+	function() {
+    	document.querySelector('.content').classList.toggle('anime');
+	}
+
+)
+    function register(){
+
+    var username = $.trim($("#usernm").val());
+    var password = $.trim($("#pswd").val());
+    var repass = $.trim($("#confpswd").val());
+    var email = $.trim($("#email").val());
+    if(!($("#checkbox").is(":checked"))){
+        window.alert("请先阅读《论坛使用手册》");
+        return false;
+    }
+    if(!email.match(/.+@.+\..+/)){
+        window.alert("邮箱地址错误。");
+        return false;
+    }
+    if(password.length<6 || password.length>16){
+        window.alert("您输入的密码长度不合法，密码长度应为6-16位。");
+        return false;
+    }
+    if(password!=repass){
+        window.alert("您两次输入的密码不一致。");
+        return false;
+    }
+    var param = "username=" + username;
+    param += "&password=" + password;
+    param += "&repassword=" + repass;
+    param += "&email=" + email;
+    $.post('/register', param, function(data){
+        if(data=="ep-err") {
+            window.alert("以上填写信息不能为空。");
+        }
+        else if(data=="username-exist")
+            window.alert("该用户名已被注册。");
+        else if(data=="email-exist")
+            window.alert("该邮箱已被注册。");
+        else if(data=="input-error")
+            window.alert("您所输入的信息中包含非法字符，请重新输入。");
+        else if(data=="reg-success"){
+            window.alert("注册成功。")
+            //setTimeout('location.reload();',500);
+            setTimeout(location.href="/",500);
+        }
+    })
+}
+</script>
+
+{% endblock %}

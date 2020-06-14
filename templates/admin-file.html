@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block content %}
+<link href="css/manage.css" rel="stylesheet" type="text/css">
+<link href="/css/zone.css" rel="stylesheet" type="text/css">
+    <div class="container">
+            <div class="zone-nav">
+                <div class="portrait">
+
+                </div>
+                <div class="list-group">
+                    <a href="/admin/users" class="list-group-item ">用户管理</a>
+                    <a href="/admin/blogs" class="list-group-item">帖子管理</a>
+                    <a href="/admin/comments" class="list-group-item ">评论管理</a>
+                    <a href="/admin/files" class="list-group-item zactive">资源管理</a>
+                </div>
+            </div>
+
+            <div class="content">
+                <h2>
+                    资源管理
+                </h2>
+                <p></p>
+                <table class="table">
+                        <thead>
+                                <tr>
+                                    <td><strong>资源id</strong></td>
+                                    <td><strong>用户id</strong></td>
+                                    <td><strong>资源名</strong></td>
+                                    <td><strong>资源标题</strong></td>
+                                    <td><strong>分享内容</strong></td>
+                                </tr>
+                            </thead>
+                        <tbody>
+                        {% for file in result %}
+                            <tr>
+                                <td>{{file.fileid}}</td>
+                                <td>{{file.userid}}</td>
+                                <td>{{file.filename}}</td>
+                                <td>{{file.headline}}</td>
+                                <td>{{file.content | striptags | truncate(25)}}</td>
+                                <td>
+                                    {% if file.hidden == 0 %}
+                                    <button class="btn-danger btn" onclick="delFile('{{file.fileid}}')">隐藏</button>
+                                    {% else %}
+                                    <button class="btn-success btn" onclick="cdelFile('{{file.fileid}}')">恢复</button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                <div class="turn">
+                    <ul class="pagination">
+                {% if page==1 %}
+                    <li>
+                        <a href="/admin/files/1">上一页</a>&nbsp;
+                    </li>
+
+                {% else %}
+                    <li>
+                        <a href="/admin/files/{{page-1}}">上一页</a>&nbsp;
+                    </li>
+                {% endif %}
+                {% for i in range(total) %}
+                    <li>
+                         <a href="/admin/files/{{i+1}}">{{i+1}}</a>&nbsp;
+                    </li>
+
+                {% endfor %}
+                {% if page==total %}
+                    <li>
+                        <a href="/admin/files/{{total}}">下一页</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="/admin/files/{{page+1}}">下一页</a>&nbsp;
+                    </li>
+
+                {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+    </div>
+<script>
+    function delFile(fileid){
+        var param = "fileid=" + fileid;
+        $.post('/admin/del-file', param, function(data){
+            if(data=='hide-success'){
+                location.reload();
+                return true;
+            }
+            else if(data=='hide-fail'){
+                window.alert('隐藏失败');
+                return false;
+            }
+        })
+    }
+
+    function cdelFile(fileid){
+        var param = "fileid=" + fileid;
+        $.post('/admin/cdel-file', param, function(data){
+            if(data=='chide-success'){
+                location.reload();
+                return true;
+            }
+            else if(data=='chide-fail'){
+                window.alert('恢复失败');
+                return false;
+            }
+        })
+    }
+
+</script>
+{% endblock %}

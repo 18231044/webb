@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block content %}
+<link href="/css/reply.css" rel="stylesheet">
+<div>
+
+
+    <div class="container">
+        {% set blog = result[0] %}
+        <h3 class="title">
+            <span class="glyphicon glyphicon-th-list"></span>
+            {{blog.headline}}
+        </h3>
+        {% if session.get('islogin') == 'true' %}
+            {% if is_favorite == True %}
+            <button class="like dislike" onclick="cancel_f('{{blog.blogid}}')">
+                <span id="heart" class="glyphicon glyphicon-heart"></span>
+            </button>
+            {% else %}
+            <button class="like dislike" onclick="favorite('{{blog.blogid}}')">
+                <span class="glyphicon glyphicon-heart-empty"></span>
+            </button>
+            {% endif %}
+        {% endif %}
+        <div class="content">
+            {% if session.get('islogin') != 'true' %}
+            <div class="container auth">
+                <div class="content auth">
+                    <span class="glyphicon glyphicon-warning-sign"></span>
+                    <p>请先登录</p>
+                </div>
+            </div>
+            {% elif session.get('islogin') == 'true' and session.get('exp') >= (blog.level*100) %}
+            <div class="post" id="host">
+                <div class="user">
+                    <a href="">{{ result.nickname }}</a>
+                    <p>等级：{{ level1 }}</p>
+                </div>
+
+                <div class="post-body">
+                    <div class="post-info">
+                        <div class="floor">
+
+                        </div>
+                        <div class="time">
+                            {{result.createtime}}
+                        </div>
+                    </div>
+                    <div class="post-reference">
+                    </div>
+                    <div class="post-text">
+                        <p>
+                            {{ blog.content | safe }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% for comment,user in comment_user %}
+            <div class="post" id="2">
+                <div class="user">
+                    <img class="icon" alt="用户头像" src="/img/avatar/{{user.avatar}}" />
+                    <div class="user-info">
+                        <div>{{user.nickname}}</div>
+                        <p>{% set level = user.exp/100 %}
+                            等级：{{level | int}}</p>
+                    </div>
+                </div>
+
+                <div class="post-body">
+                    {% if comment.replyid != 0 %}
+                    {% for comment2,user2 in comment_user %}
+                    {% if comment2.commentid == comment.replyid %}
+                    <div class="post-info">
+                        <div class="floor">
+                        </div>
+                        <div class="time">
+                            {{comment2.createtime}}
+                        </div>
+                    </div>
+                    <div class="post-reference">
+                        <fieldset>
+                            <legend>回复 {{user2.nickname}} :</legend>
+                            <blockquote>
+                                {{comment2.content | safe }}
+                            </blockquote>
+                        </fieldset>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    <div class="post-text">
+                        <p>
+                            {{comment.content | safe }}
+                        </p>
+                    </div>
+
+                    {% if session.get('userid')==user.userid or session.get('role')=='admin' %}
+                    <div class="post-btn self">
+                        <button class="thup-btn" type="button" onclick="like('{{comment.commentid}}')"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                        <button type="button" onclick="toreply('{{comment.commentid}}', '{{user.nickname}}')">
+                            <em class="glyphicon glyphicon-share-alt"></em>
+                        </button>
+
+                        <button class="delete-btn" type="button" onclick="deletComment('{{comment.commentid}}','{{user.userid}}','{{blog.blogid}}')"><span class="glyphicon glyphicon-remove"></span></button>
+
+                    </div>
+                    {% else %}
+                     <div class="post-btn">
+                         <button class="thup-btn" type="button" onclick="like('{{comment.commentid}}')"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                        <button type="button" onclick="toreply('{{comment.commentid}}', '{{user.nickname}}')">
+                            <em class="glyphicon glyphicon-share-alt"></em>
+                        </button>
+                     </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="container auth">
+                <div class="content auth">
+                    <span class="glyphicon glyphicon-warning-sign"></span>
+                    <p>浏览此贴需要等级{{blog.level}}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+
+    </div>
+
+    {% if session.get('islogin') == 'true' and session.get('exp') >= (blog.level*100) %}
+    <div class="reply" >
+        <textarea id="comment" placeholder="评论"></textarea>
+        <button class="submit" type="submit" onclick="addComment('{{blog.blogid}}',{{session.get('ban')}} )" id="commentbtn">发表评论</button>
+        <button class="submit" onclick="replyComment('{{blog.blogid}}')" style="display: none" id="replybtn">
+            回复评论
+        </button>
+    </div>
+    {% endif %}
+</div>
+
+
+
+
+{% endblock %}

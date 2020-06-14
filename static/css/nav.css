@@ -1,0 +1,74 @@
+/*Nav.css*/
+.navbar {
+    height: 40px;
+	background: white;
+}
+.nav-active {
+    height: 50px;
+    margin-bottom: -10px;
+    background: rgb(50, 50, 50);
+
+    -webkit-transition: .2s linear;
+    transition: .2s linear;
+}
+.nav-active:hover {
+    height: 80px;
+    margin-bottom: -30px;
+    padding-top: 30px;
+    background: rgb(255, 0, 87);
+    box-shadow: 0 0 20px rgb(50, 50, 50),
+                0 0 5px rgb(50, 50, 50);
+
+    -webkit-transition: .2s linear;
+    transition: .2s linear;
+}
+.navbar-default .collapse .nav-active a {
+    -webkit-transition: .2s linear;
+    transition: .2s linear;
+}
+.navbar-default .collapse .nav-active:hover a {
+    color: black;
+    font-weight: 900;
+    
+    -webkit-transition: .2s linear;
+    transition: .2s linear;
+}
+.navbar-default .collapse .nav-active a {
+    -webkit-transition: .2s linear;
+    transition: .2s linear;
+}
+.navbar-default .collapse .nav-active a:hover {
+    color: whitesmoke;
+    
+    -webkit-transition: .2s linear;
+    transition: .2s linear;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.nav-shadow {
+	box-shadow: 0 -4px 10px rgb(185, 185, 185);
+}
+.nav-container {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.search-in {
+    width: 500px;
+    height: 35px;
+    padding-left: 20px;
+    text-align: left;
+    border: none ;
+    background: rgb(240, 240, 240);
+    border-radius: 2px 0 0 2px;
+    outline:none;
+}
+.search-btn {
+    width: 50px;
+    height: 35px;
+    border: 1px solid rgb(200, 200, 200);
+    background: rgb(200, 200, 200);
+    border-radius: 0 2px 2px 0;
+}
+.search-align {
+    margin-left: 70px;
+}
